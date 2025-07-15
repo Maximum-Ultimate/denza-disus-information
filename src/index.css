@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@font-face {
+  font-family: "GeelyBold";
+  src: url("./assets/fonts/GEELYBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geely";
+  src: url("./assets/fonts/geelyLight.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "InterRegular";
+  src: url("./assets/fonts/Inter2/Inter-Regular.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "InterBold";
+  src: url("./assets/fonts/Inter2/Inter-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@keyframes blueGlow {
+  0% {
+    box-shadow: 0 0 8px #b3ecff, 0 0 16px #b3ecff, 0 0 24px #b3ecff;
+  }
+  50% {
+    box-shadow: 0 0 16px #b3ecff, 0 0 24px #b3ecff, 0 0 40px #b3ecff;
+  }
+  100% {
+    box-shadow: 0 0 8px #b3ecff, 0 0 16px #b3ecff, 0 0 24px #b3ecff;
+  }
+}
+
+.bg-radial-white {
+  background: radial-gradient(
+    ellipse 100% 100% at center,
+    transparent 60%,
+    rgb(255, 255, 255) 90%,
+    white 100%
+  );
+}
+
+.glow-animate {
+  animation: blueGlow 1.5s ease-in-out infinite;
+}
+
+.glow-only {
+  text-shadow: 0 0 5px #bfa485, 0 0 10px #bfa485, 0 0 15px #bfa485,
+    0 0 20px #bfa485;
+
+  box-shadow: inset 0 0 15px #bfa485, 0 0 25px #bfa485, 0 0 40px #bfa485;
+
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: inset 0 0 15px #bfa485, 0 0 25px #bfa485, 0 0 40px #bfa485;
+  }
+  50% {
+    box-shadow: inset 0 0 8px #bfa485, 0 0 15px #bfa485, 0 0 30px #bfa485;
+  }
+}
+
+.custom-swal {
+  background: linear-gradient(to bottom, #80a6c3, #bfa485);
+  border: 2px solid white;
+  border-radius: 2rem;
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  font-family: "GeelyBold";
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+}
+
+.custom-swal-title {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "GeelyBold";
+  color: white;
+}
+
+.custom-swal-text {
+  font-size: 22px;
+  margin-top: 1rem;
+  line-height: 1.5;
+  font-family: "InterRegular";
+  color: white;
+}
+
+.custom-swal-icon {
+  filter: drop-shadow(0 0 10px white);
+}
