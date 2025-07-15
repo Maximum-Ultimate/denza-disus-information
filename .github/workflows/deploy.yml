@@ -35,7 +35,7 @@ jobs:
             echo "Starting deployment process..."
 
             # Navigate to the application's directory
-            cd /home/buildyourdreams-disus-technology/htdocs/disus-technology.buildyourdreams.live/denza-disus-information || exit
+            cd /home/buildyourdreams-disus-technology/htdocs/disus-technology.buildyourdreams.live/denza-disus-information
 
             # Pull the latest changes from the GitHub repository
             git pull origin main
