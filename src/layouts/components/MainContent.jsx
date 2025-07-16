@@ -2,6 +2,7 @@ import { createSignal, Show, For, onMount, onCleanup } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import btnSfx from "../../assets/sfx/sfxButtonGeely.wav";
 import logoDenza from "../../assets/img/logoDenza.webp";
+import logoDenzaOnly from "../../assets/img/logoDenzaOnly.webp";
 import bgDenzaBaseVideo from "../../assets/img/bgLast.webp";
 import styles from "../../App.module.css";
 
@@ -111,29 +112,58 @@ export default function MainContent() {
     }, 800);
   };
 
+  const currentVideoData = () => {
+    return data.find((item) => item.video === activeVideo());
+  };
+
   return (
     <div class="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center text-white">
-      <div class={`absolute top-24 z-50 ${styles.fadeIn}`}>
-        <img src={logoDenza} alt="Denza Logo" class="w-[500px] mx-auto" />
-      </div>
+      {!activeVideo() && (
+        <div class={`absolute top-24 z-50 ${styles.fadeIn}`}>
+          <img src={logoDenza} alt="Denza Logo" class="w-[500px] mx-auto" />
+        </div>
+      )}
 
-      <div class="grid grid-cols-1 gap-12 mt-48 z-10 px-8">
+      <div class="w-[800px] grid grid-cols-1 gap-12 justify-items-center text-center mt-60 z-10 px-8">
         <For each={data}>
           {(item, index) => (
             <button
-              class={`flex justify-center border-2 border-white bg-gradient-to-b from-[#729eb8] via-[#96b6c8] to-[#bfa485] p-4 rounded-[2.5em] transition-all active:scale-90 duration-300 ${styles.fadeInSlideUp}`}
+              class="group w-full flex justify-center border-2 border-white p-2 rounded-[2.5em] bg-gradient-to-b 
+                    from-[#aeb7b7] to-[#C7915D] shadow-lg shadow-black
+                    transition-all active:scale-90 duration-500"
               style={{ "animation-delay": `${index() * 0.15}s` }}
               onClick={() => handleClick(item.video)}
             >
-              <div class="rounded-2xl p-1 shadow-2xl w-full">
+              <div class="rounded-2xl p-1 w-full">
                 <div
-                  class="w-full text-white p-6 rounded-[2em] border border-white bg-gradient-to-b from-[#80a6c3] to-[#bfa485] backdrop-blur-sm text-center"
-                  style={{ "font-family": "InterBold" }}
+                  class="
+                    w-full text-white p-6 rounded-[2em] border border-white
+                    bg-gradient-to-b 
+                    from-[#aeb7b7] to-[#C7915D]
+                    group-active:from-[#feffff] group-active:to-[#f8dabd] shadow-md shadow-black
+                    group-active:shadow-[0_0_30px_10px_rgba(255,255,255,0.7)]
+                    transition-all duration-500 text-center backdrop-blur-sm
+                  "
+                  style={{
+                    fontFamily: "InterBold",
+                    transition: "all 0.3s ease-in-out",
+                  }}
                 >
-                  <h1 class="text-[40px] font-bold">{item.title}</h1>
+                  <h1
+                    class="text-[40px] font-bold"
+                    style={{
+                      fontFamily: "InterBold",
+                      transition: "all 0.3s ease-in-out",
+                    }}
+                  >
+                    {item.title}
+                  </h1>
                   <p
                     class="text-[22px] mt-4 leading-snug text-center"
-                    style={{ "font-family": "InterRegular" }}
+                    style={{
+                      fontFamily: "InterRegular",
+                      textShadow: "0 0 6px rgba(255,255,255,0.3)",
+                    }}
                   >
                     {item.description}
                   </p>
@@ -142,24 +172,63 @@ export default function MainContent() {
             </button>
           )}
         </For>
+        <button
+          onclick={() => {
+            setTimeout(() => {
+              navigate("/");
+            }, 800);
+          }}
+          class="bg-white/20 mt-12 mb-16 w-[500px] py-4 rounded-xl z-10 text-[50px] font-bold border border-white text-white relative transition-all duration-300 active:scale-90 glow-only"
+          style={{
+            "font-family": "GeelyBold",
+            "text-shadow":
+              "0 0 15px rgba(255, 165, 0, 0.9), 0 0 10px rgba(255, 165, 0, 0.7)",
+          }}
+        >
+          Back
+        </button>
       </div>
 
-      <button
+      {/* <button
         onclick={() => navigate("/")}
         class="absolute top-2 left-2 w-52 text-[50px] text-white p-6 rounded-xl border border-white bg-gradient-to-b from-[#80a6c3] to-[#bfa485] backdrop-blur-sm text-center opacity-0"
       >
         BACK
-      </button>
+      </button> */}
 
       <Show when={activeVideo()}>
         <div
-          class="fixed inset-0 z-40 flex items-center justify-center bg-black"
+          class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-black"
           style={{
             "background-image": `url(${bgDenzaBaseVideo})`,
             "background-size": "cover",
             "background-position": "center",
           }}
         >
+          <div class={`absolute top-52 z-50 ${styles.fadeIn}`}>
+            <img
+              src={logoDenzaOnly}
+              alt="Denza Logo"
+              class="w-[250px] mx-auto"
+            />
+          </div>
+          {/* Title */}
+          <div
+            class={`w-[750px] text-center flex flex-col items-center justify-center absolute top-[450px] leading-none ${styles.fadeIn}`}
+          >
+            <div class="absolute inset-0 bg-gradient-to-r from-[#ffffff1a] via-[#ffffffa1] to-[#ffffff1a] rounded-md blur-sm h-full"></div>
+            <h1
+              class="relative text-white text-[100px] font-bold leading-none"
+              style={{
+                fontFamily: "GeelyBold",
+                textShadow: "0 0 10px rgba(255,255,255,0.6)",
+              }}
+            >
+              {currentVideoData()?.title}
+            </h1>
+          </div>
+
+          {/* Video */}
           <div class={`w-full px-2 pt-25 ${styles.fadeIn}`}>
             <video
               src={activeVideo()}
@@ -169,13 +238,40 @@ export default function MainContent() {
               class="w-full h-auto mx-auto rounded-xl shadow-2xl"
             />
           </div>
-          <button
+
+          {/* Close Button */}
+          {/* <button
             onClick={closeVideo}
             class={`absolute bottom-72 bg-white bg-radial-white mt-12 mb-16 px-20 py-4 rounded-xl z-10 text-[50px] font-bold border border-white text-white transition-all duration-300 active:scale-90 glow-only ${styles.fadeIn}`}
-            style={{ "font-family": "GeelyBold" }}
+            style={{ fontFamily: "GeelyBold" }}
           >
             Close
-          </button>
+          </button> */}
+
+          <div
+            class={`flex flex-col items-center justify-center absolute bottom-56 ${styles.fadeIn}`}
+          >
+            <p
+              class="text-white text-[40px] mt-4"
+              style={{
+                fontFamily: "GeelyRegular",
+                textShadow: "0 0 6px rgba(255,255,255,0.4)",
+              }}
+            >
+              {currentVideoData()?.description}
+            </p>
+            <button
+              onClick={closeVideo}
+              class={`w-[500px] bg-white/20 mt-12 mb-16 px-20 py-4 rounded-xl z-10 text-[50px] font-bold border border-white text-white transition-all duration-300 active:scale-90 glow-only ${styles.fadeIn}`}
+              style={{
+                "font-family": "GeelyBold",
+                "text-shadow":
+                  "0 0 15px rgba(255, 165, 0, 0.9), 0 0 10px rgba(255, 165, 0, 0.7)",
+              }}
+            >
+              Back
+            </button>
+          </div>
         </div>
       </Show>
     </div>
