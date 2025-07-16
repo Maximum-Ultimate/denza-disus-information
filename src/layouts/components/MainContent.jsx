@@ -214,7 +214,7 @@ export default function MainContent() {
           </div>
           {/* Title */}
           <div
-            class={`w-[750px] text-center flex flex-col items-center justify-center absolute top-[450px] leading-none ${styles.fadeIn}`}
+            class={`w-[750px] text-center flex flex-col items-center justify-center absolute top-[460px] leading-none ${styles.fadeIn}`}
           >
             <div class="absolute inset-0 bg-gradient-to-r from-[#ffffff1a] via-[#ffffffa1] to-[#ffffff1a] rounded-md blur-sm h-full"></div>
             <h1
