@@ -58,6 +58,7 @@ function App() {
         <Router>
           <Route path="/" component={Home} />
           <Route path="/main" component={MainContent} />
+          <Route path="/loading" component={Loading} />
           <Route path="/*" component={NotFoundPage} />
         </Router>
       )}
