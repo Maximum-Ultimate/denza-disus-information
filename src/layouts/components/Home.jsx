@@ -3,6 +3,8 @@ import { createSignal } from "solid-js";
 import styles from "../../App.module.css";
 import btnSfx from "../../assets/sfx/sfxButtonGeely.wav";
 import logoDenza from "../../assets/img/logoDenza.webp";
+import logoByd from "../../assets/img/logoByd.png";
+import logoDenzaByd from "../../assets/img/logoDenzaByd.webp";
 
 export default function Home() {
   const [isClicked, setIsClicked] = createSignal(false);
@@ -26,8 +28,29 @@ export default function Home() {
     <div
       class={`relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center ${styles.fadeIn}`}
     >
-      <div class="absolute top-24">
-        <img src={logoDenza} alt="Denza Logo" class="w-[500px] mx-auto" />
+      {/* <div
+        class={`absolute flex items-center pr-7 top-7 gap-10 z-50 ${styles.fadeIn}`}
+      >
+        <img
+          src={logoByd}
+          alt="BYD Logo"
+          class="w-[250px] mr-[-30px] h-auto object-contain"
+        />
+        <div class="w-[3px] h-24 bg-white"></div>
+        <img
+          src={logoDenza}
+          alt="Denza Logo"
+          class="w-[350px] mx-auto object-contain"
+        />
+      </div> */}
+      <div
+        class={`absolute flex items-center pr-7 top-16 z-50 ${styles.fadeIn}`}
+      >
+        <img
+          src={logoDenzaByd}
+          alt="Denza & BYD Logo"
+          class="w-full h-auto object-contain"
+        />
       </div>
       <div class="flex flex-col items-center">
         <div class="flex justify-center border-2 border-white bg-gradient-to-b from-[#cbcece] to-[#C7915D] px-10 py-20 mx-16 rounded-4xl">
@@ -36,7 +59,7 @@ export default function Home() {
               class="w-full text-white px-6 py-28 rounded-2xl border border-white bg-gradient-to-b from-[#aeb7b7] to-[#C7915D] backdrop-blur-sm text-center"
               style={{ "font-family": "InterBold" }}
             >
-              <h1 class="text-[55px] font-bold mb-4">DiSus TECHNOLOGY</h1>
+              <h1 class="text-[55px] font-bold mb-4">DiSus Technology</h1>
               <div class="flex justify-center my-8">
                 <hr class="w-[80%] h-[5px] bg-gradient-to-r from-transparent via-white to-transparent rounded-full opacity-70 border-none" />
               </div>

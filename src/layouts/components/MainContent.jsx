@@ -5,6 +5,8 @@ import logoDenza from "../../assets/img/logoDenza.webp";
 import logoDenzaOnly from "../../assets/img/logoDenzaOnly.webp";
 import bgDenzaBaseVideo from "../../assets/img/bgLast.webp";
 import styles from "../../App.module.css";
+import logoByd from "../../assets/img/logoByd.png";
+import logoDenzaByd from "../../assets/img/logoDenzaByd.webp";
 
 // Mock video import
 import DisusC from "../../assets/video/lite/DisusC.mp4";
@@ -14,6 +16,7 @@ import DisusX from "../../assets/video/lite/DisusX.mp4";
 import DisusZ from "../../assets/video/lite/DisusZ.mp4";
 import DisusM from "../../assets/video/lite/DisusM.mp4";
 import Swal from "sweetalert2";
+import { pauseBGM, playBGM, stopBGM } from "../helper/bgmStore";
 
 const data = [
   {
@@ -98,7 +101,11 @@ export default function MainContent() {
     buttonSfx.currentTime = 0;
     buttonSfx.play();
 
+    pauseBGM();
+
     setTimeout(() => {
+      stopBGM();
+
       setActiveVideo(video);
     }, 800);
   };
@@ -106,6 +113,8 @@ export default function MainContent() {
   const closeVideo = () => {
     buttonSfx.currentTime = 0;
     buttonSfx.play();
+
+    playBGM();
 
     setTimeout(() => {
       setActiveVideo(null);
@@ -119,8 +128,27 @@ export default function MainContent() {
   return (
     <div class="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center text-white">
       {!activeVideo() && (
-        <div class={`absolute top-24 z-50 ${styles.fadeIn}`}>
-          <img src={logoDenza} alt="Denza Logo" class="w-[500px] mx-auto" />
+        // <div class="absolute top-7 w-full flex items-center justify-center gap-10">
+        //   <img
+        //     src={logoByd}
+        //     alt="BYD Logo"
+        //     class="w-[250px] mr-[-30px] h-auto object-contain"
+        //   />
+        //   <div class="w-[3px] h-24 bg-white"></div>
+        //   <img
+        //     src={logoDenza}
+        //     alt="Denza Logo"
+        //     class="w-[350px] h-auto object-contain"
+        //   />
+        // </div>
+        <div
+          class={`absolute flex items-center pr-7 top-16 z-50 ${styles.fadeIn}`}
+        >
+          <img
+            src={logoDenzaByd}
+            alt="Denza & BYD Logo"
+            class="w-full h-auto object-contain"
+          />
         </div>
       )}
 
@@ -128,9 +156,9 @@ export default function MainContent() {
         <For each={data}>
           {(item, index) => (
             <button
-              class="group w-full flex justify-center border-2 border-white p-2 rounded-[2.5em] bg-gradient-to-b 
+              class={`group w-full flex justify-center border-2 border-white p-2 rounded-[2.5em] bg-gradient-to-b 
                     from-[#aeb7b7] to-[#C7915D] shadow-lg shadow-black
-                    transition-all active:scale-90 duration-500"
+                    transition-all active:scale-90 duration-500 ${styles.fadeInSlideUp}`}
               style={{ "animation-delay": `${index() * 0.15}s` }}
               onClick={() => handleClick(item.video)}
             >
@@ -174,11 +202,14 @@ export default function MainContent() {
         </For>
         <button
           onclick={() => {
+            buttonSfx.currentTime = 0;
+            buttonSfx.play();
+
             setTimeout(() => {
               navigate("/");
             }, 800);
           }}
-          class="bg-white/20 mt-12 mb-16 w-[500px] py-4 rounded-xl z-10 text-[50px] font-bold border border-white text-white relative transition-all duration-300 active:scale-90 glow-only"
+          class={`bg-white/20 mt-12 mb-16 w-[500px] py-4 rounded-xl z-10 text-[50px] font-bold border border-white text-white relative transition-all duration-300 active:scale-90 glow-only ${styles.fadeIn}`}
           style={{
             "font-family": "GeelyBold",
             "text-shadow":
@@ -205,11 +236,26 @@ export default function MainContent() {
             "background-position": "center",
           }}
         >
-          <div class={`absolute top-52 z-50 ${styles.fadeIn}`}>
+          {/* <div class={`absolute flex items-center top-52 gap-10 z-50 ${styles.fadeIn}`}>
             <img
-              src={logoDenzaOnly}
+              src={logoByd}
+              alt="BYD Logo"
+              class="w-[250px] mr-[-30px] h-auto object-contain"
+            />
+            <div class="w-[3px] h-24 bg-white"></div>
+            <img
+              src={logoDenza}
               alt="Denza Logo"
-              class="w-[250px] mx-auto"
+              class="w-[350px] mx-auto object-contain"
+            />
+          </div> */}
+          <div
+            class={`absolute flex items-center pr-7 top-16 z-50 ${styles.fadeIn}`}
+          >
+            <img
+              src={logoDenzaByd}
+              alt="Denza & BYD Logo"
+              class="w-full h-auto object-contain"
             />
           </div>
           {/* Title */}

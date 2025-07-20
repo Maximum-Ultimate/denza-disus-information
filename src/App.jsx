@@ -6,34 +6,24 @@ import Home from "./layouts/components/Home";
 import bgmGame from "./assets/sfx/bgGeely.wav";
 import bgDenza from "./assets/img/bgDisus.webp";
 import MainContent from "./layouts/components/MainContent";
+import { initBGM, playBGM } from "./layouts/helper/bgmStore";
 
-let bgmAudio;
+let handleUserInteraction;
 
 function App() {
   const [loading, setLoading] = createSignal(true);
   const [hasPlayed, setHasPlayed] = createSignal(false);
 
-  const handleUserInteraction = () => {
-    if (!hasPlayed()) {
-      bgmAudio = new Audio(bgmGame);
-      bgmAudio.loop = true;
-      bgmAudio.volume = 0.3;
+  onMount(() => {
+    initBGM(bgmGame);
 
-      bgmAudio
-        .play()
-        .then(() => {
-          console.log("BGM started after user interaction");
-          setHasPlayed(true);
-        })
-        .catch((err) => {
-          console.warn("Play failed after interaction:", err);
-        });
-
+    handleUserInteraction = () => {
+      playBGM();
       document.removeEventListener("click", handleUserInteraction);
-    }
-  };
+    };
 
-  document.addEventListener("click", handleUserInteraction);
+    document.addEventListener("click", handleUserInteraction);
+  });
 
   onCleanup(() => {
     document.removeEventListener("click", handleUserInteraction);
