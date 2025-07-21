@@ -25,7 +25,7 @@ const data = [
     video: DisusC,
   },
   {
-    title: "Disus-A",
+    title: "DiSus-A",
     description: "Intelligent Air Body Control System.",
     video: DisusA,
   },
