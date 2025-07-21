@@ -30,22 +30,22 @@ const data = [
     video: DisusA,
   },
   {
-    title: "Disus-P",
+    title: "DiSus-P",
     description: "Intelligent Hydraulic Body Control System.",
     video: DisusP,
   },
   {
-    title: "Disus-X",
+    title: "DiSus-X",
     description: "Intelligent Fully Active Body Control System.",
     video: DisusX,
   },
   {
-    title: "Disus-Z",
+    title: "DiSus-Z",
     description: "Intelligent Electromagnetic Body Control System.",
     video: DisusZ,
   },
   {
-    title: "Disus-M",
+    title: "DiSus-M",
     description: "Intelligent Magnetorheological Body Control System.",
     video: DisusM,
   },
