@@ -9,12 +9,12 @@ import logoByd from "../../assets/img/logoByd.png";
 import logoDenzaByd from "../../assets/img/logoDenzaByd.webp";
 
 // Mock video import
-import DisusC from "../../assets/video/lite/DisusC.mp4";
-import DisusA from "../../assets/video/lite/DisusA.mp4";
-import DisusP from "../../assets/video/lite/DisusP.mp4";
-import DisusX from "../../assets/video/lite/DisusX.mp4";
-import DisusZ from "../../assets/video/lite/DisusZ.mp4";
-import DisusM from "../../assets/video/lite/DisusM.mp4";
+import DisusC from "../../assets/video/DisusC.mp4";
+import DisusA from "../../assets/video/DisusA.mp4";
+import DisusP from "../../assets/video/DisusP.mp4";
+import DisusX from "../../assets/video/DisusX.mp4";
+import DisusZ from "../../assets/video/DisusZ.mp4";
+import DisusM from "../../assets/video/DisusM.mp4";
 import Swal from "sweetalert2";
 import { pauseBGM, playBGM, stopBGM } from "../helper/bgmStore";
 
