@@ -76,7 +76,7 @@ export default function Home() {
                   Developed by BYD, DiSus is an Intelligent body control system
                   designed to enhance performance and comfort, especially for
                   new energy vehicles (NEVs). It continuously adjusts the
-                  suspension and body movemenet in real time, ensuring a
+                  suspension and body movement in real time, ensuring a
                   smoother, safer, and more responsive
                 </p>
                 <p class="text-[35px] px-8 leading-snug text-center">
